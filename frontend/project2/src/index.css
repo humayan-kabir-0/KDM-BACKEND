@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+/* Global cursor override */
+*, *::before, *::after {
+  cursor: none !important;
+}
+html {
+  scroll-behavior: smooth;
+}
