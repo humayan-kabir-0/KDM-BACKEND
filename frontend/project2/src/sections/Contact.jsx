@@ -498,38 +498,38 @@ export default function Contact({ onBack }) {
     setErrors((prev) => ({ ...prev, [name]: newErr[name] || "" }));
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const allTouched = { name: true, email: true, message: true };
-  setTouched(allTouched);
+    const allTouched = { name: true, email: true, message: true };
+    setTouched(allTouched);
 
-  const newErr = validate(form);
-  if (Object.keys(newErr).length > 0) {
-    setErrors(newErr);
-    return;
-  }
+    const newErr = validate(form);
+    if (Object.keys(newErr).length > 0) {
+      setErrors(newErr);
+      return;
+    }
 
-  try {
-    setStatus({ loading: true, success: false, error: "" });
+    try {
+      setStatus({ loading: true, success: false, error: "" });
 
-const { error: err } = await apiClient.post("/api/contact", form);
+      const { error: err } = await apiClient.post("/api/contact", form);
 
-    if (err) throw new Error(err);
+      if (err) throw new Error(err);
 
-    setStatus({ loading: false, success: true, error: "" });
-    setForm(INIT_FORM);
-    setTouched({});
-    setErrors({});
-    setCharCount(0);
-  } catch (err) {
-    setStatus({
-      loading: false,
-      success: false,
-      error: err.message || "Failed to send. Please try again.",
-    });
-  }
-};
+      setStatus({ loading: false, success: true, error: "" });
+      setForm(INIT_FORM);
+      setTouched({});
+      setErrors({});
+      setCharCount(0);
+    } catch (err) {
+      setStatus({
+        loading: false,
+        success: false,
+        error: err.message || "Failed to send. Please try again.",
+      });
+    }
+  };
 
   const handleReset = () => {
     setStatus({ loading: false, success: false, error: "" });
@@ -723,7 +723,7 @@ const { error: err } = await apiClient.post("/api/contact", form);
                       },
                       {
                         label: "LinkedIn",
-                        href: "https://www.linkedin.com/in/humayan-kabir",
+                        href: "https://www.linkedin.com/in/humayan-kabir-",
                       },
                       {
                         label: "Discord",
@@ -965,11 +965,3 @@ const { error: err } = await apiClient.post("/api/contact", form);
     </>
   );
 }
-
-
-
-
-
-
-
- 
